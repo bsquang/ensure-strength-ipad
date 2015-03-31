@@ -36,9 +36,20 @@ body, html, input, textarea{
     -webkit-user-select: text;
   }
   
+  .animated{
+    -webkit-transition: 3s ease all;
+  }
+  .animated2{
+    -webkit-transition: 0.1s ease all;
+  }
+  
+  h3{
+    padding: 10px;
+  }
+  
   #container-pull {
       height: 600px; 
-      min-width: 980px; 
+      min-width: 710px;
       /*max-width: 950px;*/      
   }
   #container-dd {
@@ -562,6 +573,15 @@ body{
     background-image: -ms-linear-gradient(top, #d3dade, #b5bec6);
 }
 
+.ios-button-toolbar:active{
+  -webkit-transform: scale3d(0.8, 0.8, 0.8);
+  transform: scale3d(0.8, 0.8, 0.8);
+}
+.ios-button:active{
+  -webkit-transform: scale3d(0.8, 0.8, 0.8);
+  transform: scale3d(0.8, 0.8, 0.8);
+}
+
 /*iOS input*/
 .ios-input{
     padding: 0 8px;
@@ -716,6 +736,43 @@ body{
 }
 .mini-table-bottom-1{
     
+}
+
+.energy-bar{  
+  width: 85px;
+  height: 190px;
+  
+  position: relative;
+  background: url("resources/BAR-BGR.png")
+}
+
+
+.energy-item{  
+  height: 0px;
+  width: 57px;
+  
+  position: absolute;
+  
+  background: url("resources/BAR-ITEM.png");
+  background-position: bottom;
+  
+  bottom: 13px;
+  left: 14px;
+}
+
+.age-popup{
+  width: 120px;
+  min-height: 120px;
+  
+  background: rgb(205, 205, 205);
+  position: absolute;
+  z-index: 99;
+  
+  padding: 20px;
+  text-align: center;
+  
+  right: 20px;
+  top: 20px;
 }
 
 .highcharts-button{
