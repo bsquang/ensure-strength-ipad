@@ -34,7 +34,7 @@
         
                 
         <!--Panel PTLK-->
-        <div class='panel' id='panel-04' bsq-id='1' style='display: block;'>
+        <div class='panel' id='panel-04' bsq-id='1' style='display: block'>
           <div class='bsq-row ios-toolbar ios-toolbar-dark'>
             <!--<div class='ios-button-toolbar' style='left: 0; top: 0;' ontouchend='prevBUTTON()'>Quay lại</div>-->
             <p style='text-align: center;line-height: 42px;'>PHÂN TÍCH LỰC KÉO</p>
@@ -83,26 +83,28 @@
               </div>
               
             </div>
-            <div class='col-30 col-right'>
+            <div class='col-30 col-right' style='height: 726px;background: rgb(74, 74, 74);color: white;'>
               <div class='bsq-row' style='text-align: center;'>
                 <h3>STRENGTH ENERGY</h3>
               </div>
-              <div class='bsq-row group' style='padding-top: 20px;width: 270px;margin: auto;'>
+              <div class='bsq-row group' style='padding-top: 100px;width: 270px;margin: auto;'>
                 
                 <div class='col-left'>
                   <div class='energy-bar'>
-                    <div class='energy-item animated'></div>
+                    <div class='energy-item animated'>
+                      <p style='position: absolute;top: 0;color: white;left:50%;top:10px;-webkit-transform: translateX(-50%);text-shadow: 1px 1px 1px #000;font-weight: bold'>30%</p>
+                    </div>
                   </div>  
                 </div>
-                <div class='col-left col-50' style='padding: 10px'>
-                  <p id='battery-result'>Your strength battery < 100%</p>  
+                <div class='bsq-row' style='padding: 10px;  position: absolute;  top: 420px;  text-align: center;'>
+                  <p id='battery-result' >Your strength energy < 100%</p>  
                 </div>
                 
               </div>
             </div>
           </div>
           
-          <div class='bsq-row group' style='padding: 10px;'>
+          <div class='bsq-row group' style='padding: 10px;  position: absolute;  left: 0;  bottom: 0;'>
             <div class='ios-button ios-button-confirm col-right col-20 animated2' ontouchend='nextBUTTON()'>Tiếp</div>
           </div>
         </div>
@@ -187,6 +189,8 @@
       <script src="resources/jquery.nouislider.all.min.js"></script>
       
       <!--<script src="database.js"></script>      -->
+      
+      <script type="text/javascript" src="line.js?89"></script>
       <script src="game.js?9"></script>
       
       

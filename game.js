@@ -1,10 +1,10 @@
 var user = {
-  'age':1965,
+  'age':1984,
   'sex':0
 }
 
 var total = {
-    'pull': 38   
+    'pull': 44   
 }
 
 
@@ -43,14 +43,20 @@ function calBattery(currentPull, maxPull){
   var heightBAR;
   
   if (percent < 100) {
-    $("#battery-result").html('Your strength battery < 100%');
+    $("#battery-result").html('Your strength energy < 100%');
     heightBAR = 163 * percent / 100;
   }else if (percent >= 100) {
-    $("#battery-result").html('Your strength battery is full');
+    $("#battery-result").html('Your strength energy is full');
     heightBAR = 163;
   }
   
-  $('.energy-item').height(heightBAR);
+  $('.energy-item').height(20);
+  
+  setTimeout(function(){
+	
+	 $('.energy-item').height(heightBAR);
+	
+  }, 200)
   
 }
 
@@ -189,36 +195,43 @@ function calPTLK(type) {
     var lessIndex = -1;
     var oldCalLess = 0;
     
-    if (total.pull < middlePULL) {           
-      
-      for (var i = 0; i < defaultPull.length; i++) {
-          
-          if(age1[i] > age1[currentPOS]){
-            
-            if (total.pull >= defaultPull[i]) {
-              
-              
-              
-              if (oldCalLess == 0) {
-                
-                oldCalLess = defaultPull[i] - total.pull;
-                lessIndex = i;
-                
-              }else{
-                
-                var calLess = defaultPull[i] - total.pull;
-                if (calLess > oldCalLess) {
-                  lessIndex = i;
-                }
-                
-              }
-              
-            }
-            
-          }
-          
-          
-      }
+    if (total.pull < middlePULL) {
+	  
+	  if (total.pull < defaultPull[defaultPull.length-1]) {
+		
+		lessIndex = defaultPull.length-1;
+		oldPOINT = lessIndex;
+		
+	  }else{
+
+		for (var i = 0; i < defaultPull.length; i++) {
+			
+			if(age1[i] > age1[currentPOS]){
+			  
+			  if (total.pull >= defaultPull[i]) {
+				
+				
+				
+				if (oldCalLess == 0) {
+				  
+				  oldCalLess = defaultPull[i] - total.pull;
+				  lessIndex = i;
+				  
+				}else{
+				  
+				  var calLess = defaultPull[i] - total.pull;
+				  if (calLess > oldCalLess) {
+					lessIndex = i;
+				  }
+				  
+				}
+				
+			  }
+			  
+			}
+		}
+	  
+	  }
             
       
       if (lessIndex >= 0) {        
@@ -340,6 +353,14 @@ function calPTLK(type) {
             stroke: 'black',
             'stroke-width': 1
         }).add();
+		
+		console.log(point);
+		
+		var posEnd = {'x':point.plotX+60, 'y':point.plotY +10};
+		$('#container-pull').line(640, 190, posEnd.x, posEnd.y, {color:"red", zindex:33});
+		
+		//$('#container-pull').line(posEnd.x, posEnd.y, posEnd.x-10, posEnd.y-10, {color:"red", zindex:33});
+		//$('#container-pull').line(posEnd.x, posEnd.y, posEnd.x+10, posEnd.y-10, {color:"red", zindex:33});
       }
       
     
@@ -394,6 +415,8 @@ function calPTLK(type) {
     });
     
     divTarget.find("text").last().hide();
+	
+	$(".energy-bar").fadeIn();
 }
 
 function bsqStringToNumber(content){
