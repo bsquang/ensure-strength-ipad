@@ -20,16 +20,12 @@ $(".panel").css({
   'min-height':'768px'
 })
 
-calPTLK(1);
-createArrayGrid()
-createAreaColor();
+//calPTLK(1);
 
-function createAreaColor(){
-  
-}
+
 
 function createArrayGrid(){
-  for(var i=0; i< 17;i++){
+  for(var i=0; i< 16;i++){
 	
 	var posEnd = {'x':63+(i*40), 'y':0};
 	createLine(posEnd,520);
@@ -442,6 +438,8 @@ function calPTLK(type) {
     
     });
     
+	createArrayGrid();
+	
     divTarget.find("text").last().hide();
 	
 	$(".highcharts-container").css({
