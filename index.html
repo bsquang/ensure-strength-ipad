@@ -34,7 +34,7 @@
         
                 
         <!--Panel PTLK-->
-        <div class='panel' id='panel-04' bsq-id='1' style='display: block'>
+        <div class='panel' id='panel-04' bsq-id='1' style=''>
           <div class='bsq-row ios-toolbar ios-toolbar-dark'>
             <!--<div class='ios-button-toolbar' style='left: 0; top: 0;' ontouchend='prevBUTTON()'>Quay lại</div>-->
             <p style='text-align: center;line-height: 42px;'>PHÂN TÍCH LỰC KÉO</p>
@@ -43,6 +43,8 @@
           
           <div class='row-60' style='padding-top: 50px'>
             <div class='bsq-row'>
+              <input id='input-user-name' type='text' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào họ và tên' />
+              
               <input id='input-user-birth' type='number' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào năm sinh' />
               
               <select id='select-user-gender' style='width: 100%;padding: 10px 20px;font-size: 20px; margin-bottom: 5px;'>
@@ -62,7 +64,7 @@
         <!--END-->
         
         <!--DIAGRAM PULL-->
-        <div class='panel' id='panel-05' style='background: white;' bsq-id='2' >
+        <div class='panel' id='panel-05' style='background: white;display: block;' bsq-id='2' >
           <div class='bsq-row ios-toolbar ios-toolbar-dark'>
             <div class='ios-button-toolbar animated2' style='left: 0; top: 0;' ontouchend='prevBUTTON()'>Quay lại</div>
             <p style='text-align: center;line-height: 42px;height: 42px;'>  </p>
@@ -72,20 +74,28 @@
           <div class='bsq-row group'>
             <div class='col-70 col-left'>
               <div class='bsq-row' style='text-align: center;'>
-                <h3>STRENGTH AGE</h3>
+                <h3>TUỔI THỂ LỰC</h3>
               </div>
               <div class='bsq-row'>
                 <div class='age-popup'>
-                  <p>Your strength age:</p>
+                  <p>Thể lực tương ứng tuổi:</p>
                   <h1 style='font-size: 60px' id='age-popup-text'>--</h1>
                 </div>
+                
+                <div class='group' style='  width: 640px;height: 520px;position: absolute;left: 63px;top: 8px;z-index: 1;'>
+                  <div style='background: #dfe8f3;width: 25%;  height: 100%;float: left'></div>
+                  <div style='background: #ffe3f6;width: 25%;  height: 100%;float: left'></div>
+                  <div style='background: #d1f1df;width: 25%;  height: 100%;float: left'></div>
+                  <div style='background: white;width: 25%;  height: 100%;float: left'></div>
+                </div>
+                
                 <div id="container-pull" ></div>
               </div>
               
             </div>
             <div class='col-30 col-right' style='height: 726px;background: rgb(74, 74, 74);color: white;'>
               <div class='bsq-row' style='text-align: center;'>
-                <h3>STRENGTH ENERGY</h3>
+                <h3>PIN THỂ LỰC</h3>
               </div>
               <div class='bsq-row group' style='padding-top: 100px;width: 270px;margin: auto;'>
                 
@@ -97,7 +107,7 @@
                   </div>  
                 </div>
                 <div class='bsq-row' style='padding: 10px;  position: absolute;  top: 420px;  text-align: center;'>
-                  <p id='battery-result' >Your strength energy < 100%</p>  
+                  <p id='battery-result' >Pin thể lực của bạn < 100%</p>  
                 </div>
                 
               </div>

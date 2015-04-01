@@ -1,4 +1,5 @@
 var user = {
+  'name':'NguyenDongQuang',
   'age':1984,
   'sex':0
 }
@@ -19,8 +20,27 @@ $(".panel").css({
   'min-height':'768px'
 })
 
-//calPTLK(1);
+calPTLK(1);
+createArrayGrid()
+createAreaColor();
 
+function createAreaColor(){
+  
+}
+
+function createArrayGrid(){
+  for(var i=0; i< 17;i++){
+	
+	var posEnd = {'x':63+(i*40), 'y':0};
+	createLine(posEnd,520);
+	
+  }
+  
+}
+
+function createLine(pos, height) {
+  $('#container-pull').line(pos.x, pos.y, pos.x, height, {color:"rgb(194, 194, 194)", zindex:33});
+}
 
 setTimeout(function(){ $($(".panel[bsq-id=1]").find('input')[0]).focus() } , 300);
 
@@ -43,13 +63,17 @@ function calBattery(currentPull, maxPull){
   var heightBAR;
   
   if (percent < 100) {
-    $("#battery-result").html('Your strength energy < 100%');
+    $("#battery-result").html('Pin thể lực của bạn <100%');
     heightBAR = 163 * percent / 100;
   }else if (percent >= 100) {
-    $("#battery-result").html('Your strength energy is full');
+    $("#battery-result").html('Pin thể lực của bạn đạt 100%');
     heightBAR = 163;
   }
   
+  $('#percent-bar-text').hide();
+  setTimeout(function(){
+	$('#percent-bar-text').fadeIn(500);
+  },3000);
   $('#percent-bar-text').text(Math.round(percent)+"%"); 
   
   $('.energy-item').height(20);
@@ -67,6 +91,7 @@ function checkPTLK() {
   document.activeElement.blur();
   $(window).scrollTop(0);
   
+  user.name = $("#input-user-name").val();
   user.age = $("#input-user-birth").val();
   user.sex = $("#select-user-gender").val();
   
@@ -106,7 +131,7 @@ $('#input-pull').change(function(){
   showButtonPTLK();
 
 });
-  
+
 function showButtonPTLK() {
   
   $("#button-ptlk").show();
@@ -124,10 +149,10 @@ function calPTLK(type) {
 	
 	divTarget.html('');
     
-    var age1 = ['11', '13', '15', '17', '19', '24', '29', '34', '39', '44', '49', '54', '59', '64', '69', '99'];
+    var age1 = ['11', '13', '15', '17', '19', '24', '29', '34', '39', '44', '49', '54', '59', '64', '69', '82'];
     
     var age = ['10-11', '12-13', '14-15', '16-17', '18-19', '20-24', '25-29', '30-34', '35-39',
-               '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-99'];
+               '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-82'];
     
     var age_temp = getAge(user.age);
     var user_pulls = [];
@@ -264,6 +289,7 @@ function calPTLK(type) {
 
     divTarget.highcharts({
         chart: {
+			backgroundColor: 'transparent',
             type: 'spline'
         },
         title: {
@@ -359,7 +385,7 @@ function calPTLK(type) {
 		console.log(point);
 		
 		var posEnd = {'x':point.plotX+60, 'y':point.plotY +10};
-		$('#container-pull').line(640, 190, posEnd.x, posEnd.y, {color:"red", zindex:33});
+		$('#container-pull').line(640, 190, posEnd.x, posEnd.y, {color:"red", zindex:999});
 		
 		//$('#container-pull').line(posEnd.x, posEnd.y, posEnd.x-10, posEnd.y-10, {color:"red", zindex:33});
 		//$('#container-pull').line(posEnd.x, posEnd.y, posEnd.x+10, posEnd.y-10, {color:"red", zindex:33});
@@ -417,6 +443,10 @@ function calPTLK(type) {
     });
     
     divTarget.find("text").last().hide();
+	
+	$(".highcharts-container").css({
+	  'z-index' : 999
+	})
 	
 	$(".energy-bar").fadeIn();
 }
