@@ -50,6 +50,8 @@ function calBattery(currentPull, maxPull){
     heightBAR = 163;
   }
   
+  $('#percent-bar-text').text(Math.round(percent)+"%"); 
+  
   $('.energy-item').height(20);
   
   setTimeout(function(){
