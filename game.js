@@ -2,10 +2,12 @@ var user = {
   'name':'NguyenDongQuang',
   'age':1984,
   'sex':0
+  
 }
 
 var total = {
-    'pull': 44   
+    'pull': 44,
+	'percent':50
 }
 
 
@@ -22,7 +24,152 @@ $(".panel").css({
 
 //calPTLK(1);
 
+var bANIEND02 = false;
+function aniEND02() {
+  
+  if (!bANIEND02) {
+  
+	$("#end-01-ele-01").css({
+	  'width':'50%'
+	})
+	
+	
+	$('#end-01-ele-02').delay(1000).fadeIn();
+	$('#end-01-ele-04').delay(2000).fadeIn();
+	
+	setTimeout(function(){
+	  $("#end-01-ele-01").css({
+	  'width':'100%'
+	  });
+	},3000);
+	
+	
+	$('#end-01-ele-03').delay(4000).fadeIn();
+	$('#end-01-ele-05').delay(5000).fadeIn();
+	
+	setTimeout(function(){
+	  $('#end-01-button-next').css({
+	  'opacity':'1'
+	  });
+	},6000);
+  
+	bANIEND02 = true; 
+  
+  }
+  
+}
 
+var bANIEND03 = false;
+function aniEND03() {
+  
+  if (!bANIEND03) {
+	$('#end-02-ele-man').delay(300).fadeIn();
+	
+	for(var i=1;i<11;i++){
+	  
+	  $('#end-02-ele-'+i).delay(1000 + (i*100)).fadeIn();  
+	  
+	}
+	
+	$('#end-02-button-01').delay(3000).fadeIn();
+	$('#end-02-button-01').click(function(){
+	  
+	  $('#end-02-button-01').addClass('animated2')
+	  $('#end-02-button-01').css({	  
+		'-webkit-transform': 'scale(0.6)',
+		'opacity': '0.6',
+	  })
+	  
+	  $('#end-02-button-02').fadeIn();
+	  $('#end-02-button-02').click(function(){randomHIDEElement()});
+	  $('#end-02-button-03').fadeIn();
+	  $('#end-02-button-03').click(function(){randomHIDEElement()});
+	  
+	  for(var i=1;i<11;i++){
+		
+		$('#end-02-ele-'+i).addClass('animated2')
+		$('#end-02-ele-'+i).css({
+		'opacity' : '1'
+		})
+		
+	  }
+	  
+	})
+  
+	bANIEND03 = true;
+  
+  }
+  
+}
+
+var bANIEND04 = false;
+function aniEND04() {
+  
+  if (!bANIEND04) {
+	for(var i=1;i<6;i++){
+		
+		$('#end-03-ele-0'+i).addClass('animated-1s')
+		
+		$('#end-03-ele-0'+i)
+		.delay(200 * i)
+		.queue( function(next){ 
+		  $(this).css({
+			'top':'250px'
+		  })
+		  next(); 
+		});
+		
+		$('#end-03-ele-0'+i)
+		.delay(1000+200 * i)
+		.queue( function(next){ 
+		  $(this).css({
+			'left':'299px',
+			'top':'460px',
+			'opacity':'0'
+		  })
+		  next(); 
+		});
+	}
+	
+	$("#end-bar-inside").addClass('animated-1s')
+	$("#end-bar-inside")
+		.delay(2000)
+		.queue( function(next){ 
+		  $(this).css({
+			'height':'226px'
+		  })
+		  next(); 
+		});
+		
+	$("#end-03-button-next")
+		.delay(2000)
+		.queue( function(next){ 
+		  $(this).show();
+		  next(); 
+		}); 
+	
+	bANIEND04 = true;
+  }
+}
+
+function randomHIDEElement() {
+  
+  var numberRand = getRandomInt(1,10);
+  
+  if($('#end-02-ele-'+numberRand).css('opacity') == 1){
+	$('#end-02-ele-'+numberRand).css({
+	'opacity' : '0.5'
+	})
+  }else{
+	randomHIDEElement();
+  }
+  
+  $('#end-02-button-next').show();
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function createArrayGrid(){
   for(var i=0; i< 16;i++){
@@ -55,7 +202,10 @@ function gotoPanel(id){
 
 function calBattery(currentPull, maxPull){  
   
-  var percent = currentPull * 100 / maxPull;  
+  var percent = currentPull * 100 / maxPull;
+  
+  total.percent = percent;
+  
   var heightBAR;
   
   if (percent < 100) {
@@ -99,6 +249,37 @@ function checkPTLK() {
 function nextBUTTON() {
     
   $(window).scrollTop(0);
+  
+  if (current == 2) {
+	
+	var temp = "Với thể lực tương ứng ở tuổi "+getAge(user.age)+", bạn đang bị suy giảm sức khỏe hậu quả dễ thấy nhất là:";
+	$("#end-01-ele-02").text(temp);
+	
+	setTimeout(function(){ aniEND02(); } , 200 );
+  }
+  if (current == 2) {
+	
+	var tempAge = getAge(user.age);
+	
+	if (tempAge < 60) {
+	  $("#result-01").show();
+	}else{
+	  $("#result-02").show();
+	}
+	
+  }
+  if (current == 4) {
+	setTimeout(function(){ aniEND03(); } , 200 );	
+  }
+  if (current == 5) {
+	
+	var heightBAR = 226 * total.percent / 100;
+	$("#end-bar-inside").css({
+	  'height' : heightBAR + 'px'
+	})
+	
+	setTimeout(function(){ aniEND04(); } , 200 );
+  }
 
   current += 1; 
   gotoPanel(current);  
@@ -152,9 +333,7 @@ function calPTLK(type) {
     
     var age_temp = getAge(user.age);
     var user_pulls = [];
-    var user_pull_data = (total.pull);
-    
-    
+    var user_pull_data = (total.pull);    
     
     var currentPOS = 0;
     

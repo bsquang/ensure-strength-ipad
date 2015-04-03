@@ -43,6 +43,10 @@ body, html, input, textarea{
   .animated2{
     -webkit-transition: 0.1s ease all;
   }
+  .animated-1s{
+    -webkit-transition: 1s ease all;
+    /*-webkit-transition-delay: 2s;*/
+  }
   
   h3{
     padding: 10px;
@@ -90,7 +94,7 @@ body, html, input, textarea{
     background: url('resources/BGR-INFO.jpg');
   }
   #panel-07{
-    background: url('resources/BGR-END.png');
+    background: url('resources/end/BGR-PARTERN.png');
   }
 
   
@@ -469,6 +473,8 @@ body{
     font-weight: bold;
     color: #283b5a;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    
+    z-index: 9999;
 }
 .ios-toolbar-dark{
     border-color: #3f5c80 !important;
@@ -746,8 +752,8 @@ body{
   position: relative;
   background: url("resources/BAR-BGR.png");
   
-  transform: scale(1.7) translate(60px,30px);
-  -webkit-transform: scale(1.7) translate(60px,30px);
+  transform: scale(1.9) translate(49px,30px);
+  -webkit-transform: scale(1.9) translate(49px,30px);
   
   display: none;
 }

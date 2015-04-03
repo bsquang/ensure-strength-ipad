@@ -12,7 +12,7 @@
       <link href="resources/jquery.nouislider.min.css" rel="stylesheet">
       
     
-      <script src='phonegap.js'></script>
+      <!--<script src='phonegap.js'></script>-->
     
       <script>
         
@@ -23,22 +23,14 @@
     <body>
       
       <div class='wrapper'>
-        <!--<div class='logo-luvitas'></div>-->
-                
-        <!--PANEL INTRO-->
-        <div class='panel' id='panel-00' bsq-id='8'>
-          
-          <p class='button-1' id='btt-next-intro'></p>
-        </div>
-        <!--END-->
         
                 
         <!--Panel PTLK-->
-        <div class='panel' id='panel-04' bsq-id='1' style='display: block'>
+        <div class='panel' id='panel-04' bsq-id='1' style='display: block'  >
           <div class='bsq-row ios-toolbar ios-toolbar-dark'>
-            <!--<div class='ios-button-toolbar' style='left: 0; top: 0;' ontouchend='prevBUTTON()'>Quay lại</div>-->
+            <!--<div class='ios-button-toolbar' style='left: 0; top: 0;' onclick='prevBUTTON()'>Quay lại</div>-->
             <p style='text-align: center;line-height: 42px;'>PHÂN TÍCH LỰC KÉO</p>
-            <!--<div class='ios-button-toolbar' style='right: 0; top: 0;' ontouchend='controlBUTTON()'>Bảng điều khiển</div>-->
+            <!--<div class='ios-button-toolbar' style='right: 0; top: 0;' onclick='controlBUTTON()'>Bảng điều khiển</div>-->
           </div>
           
           <div class='row-60' style='padding-top: 50px'>
@@ -56,7 +48,7 @@
             </div>
             <div class='bsq-row group' style='margin-top: 10px;'>              
               <div class='col-right col-30'>                      
-                <div class='ios-button ios-button-confirm animated2' style='display: none;' id='button-ptlk' ontouchend="checkPTLK()">Kiểm tra</div>
+                <div class='ios-button ios-button-confirm animated2' style='display: none;' id='button-ptlk' onclick="checkPTLK()">Kiểm tra</div>
               </div>
             </div> 
           </div>          
@@ -66,9 +58,9 @@
         <!--DIAGRAM PULL-->
         <div class='panel' id='panel-05' style='background: white;' bsq-id='2' >
           <div class='bsq-row ios-toolbar ios-toolbar-dark'>
-            <div class='ios-button-toolbar animated2' style='left: 0; top: 0;' ontouchend='prevBUTTON()'>Quay lại</div>
+            <div class='ios-button-toolbar animated2' style='left: 0; top: 0;' onclick='prevBUTTON()'>Quay lại</div>
             <p style='text-align: center;line-height: 42px;height: 42px;'>  </p>
-            <!--<div class='ios-button-toolbar' style='right: 0; top: 0;' ontouchend='controlBUTTON()'>Bảng điều khiển</div>-->
+            <!--<div class='ios-button-toolbar' style='right: 0; top: 0;' onclick='controlBUTTON()'>Bảng điều khiển</div>-->
           </div>          
             
           <div class='bsq-row group'>
@@ -107,7 +99,7 @@
                   </div>  
                 </div>
                 <div class='bsq-row' style='padding: 10px;  position: absolute;  top: 420px;  text-align: center;'>
-                  <p id='battery-result' >Pin thể lực của bạn < 100%</p>  
+                  <p id='battery-result' style='display: none'>Pin thể lực của bạn < 100%</p>  
                 </div>
                 
               </div>
@@ -115,29 +107,138 @@
           </div>
           
           <div class='bsq-row group' style='padding: 10px;  position: absolute;  left: 0;  bottom: 0;'>
-            <div class='ios-button ios-button-confirm col-right col-20 animated2' ontouchend='nextBUTTON()'>Tiếp</div>
+            <div class='ios-button ios-button-confirm col-right col-20 animated2' onclick='nextBUTTON()'>Tiếp</div>
           </div>
         </div>
         <!--END-->
                 
         <!--FINAL PANEL-->
-        <div class='panel' id='panel-07' bsq-id='3'>
+        <div class='panel' id='panel-07' bsq-id='3' >
           <div class='bsq-row ios-toolbar ios-toolbar-dark'>
-            <div class='ios-button-toolbar animated2' style='left: 0; top: 0;' ontouchend='prevBUTTON()'>Quay lại</div>
+            <div class='ios-button-toolbar animated2' style='left: 0; top: 0;' onclick='prevBUTTON()'>Quay lại</div>
+            <p style='text-align: center;line-height: 42px;'></p>
+            <!--<div class='ios-button-toolbar' style='right: 0; top: 0;' onclick='controlBUTTON()'>Bảng điều khiển</div>-->
+          </div>
+          
+          <h1 style='position: absolute; left: 290px; top: 40px;'>SUY GIẢM SỨC KHỎE</h1>
+          
+          <div class='animated-1s' id='end-01-ele-01' style="background: url('resources/end/END-01.png'); width: 0%; height: 100%; position: absolute; left: 0; top: 0;" ></div>
+          
+          <p id='end-01-ele-02' style='position: absolute;left: 60px;top: 110px;width: 400px;color: white;font-size: 20px;text-shadow: 1px 1px 1px #000;display: none'>Với thể lực tương ứng ở tuổi 65, bạn đang bị suy giảm sức khỏe hậu quả dễ thấy nhất là:</p>
+          <p id='end-01-ele-03' style='position: absolute;left: 570px;top: 110px;width: 400px;color: white;font-size: 20px;text-shadow: 1px 1px 1px #000;display: none'>Nếu không can thiệp kịp thời để tăng cường sức khỏe sẽ dẫn đến các bệnh mãn tính</p>
+          
+          <div class='' id='end-01-ele-04'
+               style="background: url('resources/end/END-ELE-01.png');
+               width: 365px; height: 348px; position: absolute; left: 120px; top: 350px; display: none;"></div>
+          <div class='' id='end-01-ele-05'
+               style="background: url('resources/end/END-ELE-02.png');
+               width: 362px; height: 314px; position: absolute; left: 620px; top: 350px; display: none"></div>
+          
+          <br>
+          <div class='bsq-row group' style='padding: 10px;position: absolute;bottom: 0;'>
+            <div id='end-01-button-next' style='opacity: 0;' class='ios-button ios-button-confirm col-right col-20 animated2' onclick='nextBUTTON()'>Tiếp</div>
+          </div>
+        </div>
+        <!--END-->
+        <!--FINAL PANEL2-->
+        <div class='panel' id='panel-07' bsq-id='4'>
+          <div class='bsq-row ios-toolbar ios-toolbar-dark'>
+            <div class='ios-button-toolbar animated2' style='left: 0; top: 0;' onclick='prevBUTTON()'>Quay lại</div>
             <p style='text-align: center;line-height: 42px;'>CẢM ƠN</p>
-            <!--<div class='ios-button-toolbar' style='right: 0; top: 0;' ontouchend='controlBUTTON()'>Bảng điều khiển</div>-->
+            <!--<div class='ios-button-toolbar' style='right: 0; top: 0;' onclick='controlBUTTON()'>Bảng điều khiển</div>-->
+          </div>
+          
+          <div id='result-01' style="background: url('resources/end/RESULT-01.png'); width: 100%; height: 100%; position: absolute; left: 0; top: 0;display: none;" ></div>
+          <div id='result-02' style="background: url('resources/end/RESULT-02.png'); width: 100%; height: 100%; position: absolute; left: 0; top: 0;display: none;" ></div>
+          
+          <br>
+          <div class='bsq-row group' style='padding: 10px;position: absolute;bottom: 0;'>
+            <div class='ios-button ios-button-confirm col-right col-20 animated2' onclick='nextBUTTON()'>Tiếp</div>
+          </div>
+        </div>
+        <!--END-->
+        <!--FINAL PANEL3-->
+        <div class='panel' id='panel-07' bsq-id='5'>
+          <div class='bsq-row ios-toolbar ios-toolbar-dark'>
+            <div class='ios-button-toolbar animated2' style='left: 0; top: 0;' onclick='prevBUTTON()'>Quay lại</div>
+            <p style='text-align: center;line-height: 42px;'>CẢM ƠN</p>
+            <!--<div class='ios-button-toolbar' style='right: 0; top: 0;' onclick='controlBUTTON()'>Bảng điều khiển</div>-->
+          </div>
+          
+          <div id='end-02-ele-bgr' style="background: url('resources/end/END-02.png'); width: 100%; height: 100%; position: absolute; left: 0; top: 0;" ></div>
+          <img id='end-02-ele-man' style='position: absolute; left: 630px; top: 240px; display: none;' src='resources/end/MAN.png' />
+          
+          <img id='end-02-ele-1' style='position: absolute; left: 510px; top: 240px; display: none;' src='resources/end/ELE-1 (2).png' />
+          <img id='end-02-ele-2' style='position: absolute; left: 480px; top: 330px; display: none;' src='resources/end/ELE-1 (3).png' />
+          <img id='end-02-ele-3' style='position: absolute; left: 470px; top: 410px; display: none;' src='resources/end/ELE-1 (4).png' />
+          <img id='end-02-ele-4' style='position: absolute; left: 490px; top: 500px; display: none;' src='resources/end/ELE-1 (5).png' />
+          <img id='end-02-ele-5' style='position: absolute; left: 510px; top: 580px; display: none;' src='resources/end/ELE-1 (6).png' />
+          
+          <img id='end-02-ele-6' style='position: absolute; left: 750px; top: 240px; display: none;' src='resources/end/ELE-1 (7).png' />
+          <img id='end-02-ele-7' style='position: absolute; left: 780px; top: 330px; display: none;' src='resources/end/ELE-1 (8).png' />
+          <img id='end-02-ele-8' style='position: absolute; left: 790px; top: 410px; display: none;' src='resources/end/ELE-1 (9).png' />
+          <img id='end-02-ele-9' style='position: absolute; left: 780px; top: 500px; display: none;' src='resources/end/ELE-1 (10).png' />
+          <img id='end-02-ele-10' style='position: absolute; left: 780px; top: 580px; display: none;' src='resources/end/ELE-1 (1).png' />
+          
+          <img id='end-02-button-01' style='position: absolute;left:110px; top:290px; display: none;' src='resources/end/ELE-2 (1).png' />
+          <img id='end-02-button-02' style='position: absolute;left:210px; top:250px; display: none;' src='resources/end/ELE-2 (2).png' />
+          <img id='end-02-button-03' style='position: absolute;left:110px; top:420px; display: none;' src='resources/end/ELE-2 (3).png' />
+          
+          <br>
+          <div class='bsq-row group' style='padding: 10px;position: absolute;bottom: 0;'>
+            <div id='end-02-button-next' style='display: none;'  class='ios-button ios-button-confirm col-right col-20 animated2' onclick='nextBUTTON()'>Tiếp</div>
+          </div>
+        </div>
+        <!--END-->
+        <!--FINAL PANEL4-->
+        <div class='panel' id='panel-07' bsq-id='6'>
+          <div class='bsq-row ios-toolbar ios-toolbar-dark'>
+            <div class='ios-button-toolbar animated2' style='left: 0; top: 0;' onclick='prevBUTTON()'>Quay lại</div>
+            <p style='text-align: center;line-height: 42px;'>CẢM ƠN</p>
+            <!--<div class='ios-button-toolbar' style='right: 0; top: 0;' onclick='controlBUTTON()'>Bảng điều khiển</div>-->
+          </div>
+          
+          <div id='end-03-ele-bgr' style="background: url('resources/end/END-03.png'); width: 100%; height: 100%; position: absolute; left: 0; top: 0;" ></div>          
+          
+          
+          <img id='end-03-ele-01' style='position: absolute;left: 850px;top: 380px; z-index: 9;' src='resources/end/ELE-3 (1).png' />
+          <img id='end-03-ele-02' style='position: absolute;left: 850px;top: 380px; z-index: 9; ' src='resources/end/ELE-3 (2).png' />
+          <img id='end-03-ele-03' style='position: absolute;left: 850px;top: 380px; z-index: 9; ' src='resources/end/ELE-3 (3).png' />
+          <img id='end-03-ele-04' style='position: absolute;left: 850px;top: 380px; z-index: 9; ' src='resources/end/ELE-3 (4).png' />
+          <img id='end-03-ele-05' style='position: absolute;left: 850px;top: 380px; z-index: 9; ' src='resources/end/ELE-3 (5).png' />
+          
+          <img id='end-03-button-01' style='position: absolute;left:742px; top:372px;z-index: 10 ' src='resources/end/ABBOTT-ENSURE.png' />
+          
+          <div id='end-bar' style='position: absolute; width: 114px; height: 265px; top: 430px;left: 280px; background: url("resources/end/ENERGYBAR-BGR.png")'>            
+            <div id='end-bar-inside' style='position: absolute; left: 18px; bottom: 21px; width: 77px; height: 26px; background: url("resources/end/ENERGYBAR-ELE.png"); background-position: bottom;'></div>
           </div>
           
           
           <br>
           <div class='bsq-row group' style='padding: 10px;position: absolute;bottom: 0;'>
-            <div class='ios-button ios-button-confirm col-left col-20 animated2' ontouchend='refreshPage()'>Tiếp</div>
+            <div id='end-03-button-next' style='display: none;' class='ios-button ios-button-confirm col-right col-20 animated2' onclick='nextBUTTON()'>Tiếp</div>
           </div>
         </div>
         <!--END-->
+        <!--FINAL PANEL5-->
+        <div class='panel' id='panel-07' bsq-id='7'>
+          <div class='bsq-row ios-toolbar ios-toolbar-dark'>
+            <div class='ios-button-toolbar animated2' style='left: 0; top: 0;' onclick='prevBUTTON()'>Quay lại</div>
+            <p style='text-align: center;line-height: 42px;'>CẢM ƠN</p>
+            <!--<div class='ios-button-toolbar' style='right: 0; top: 0;' onclick='controlBUTTON()'>Bảng điều khiển</div>-->
+          </div>
+          
+          <div id='end-03-ele-bgr' style="background: url('resources/end/END-04.png'); width: 100%; height: 100%; position: absolute; left: 0; top: 0;" ></div>
+          
+          <br>
+          <div class='bsq-row group' style='padding: 10px;position: absolute;bottom: 0;'>
+            <div class='ios-button ios-button-confirm col-right col-20 animated2' onclick='refreshPage()'>Tiếp</div>
+          </div>
+        </div>
+        <!--END-->        
         
         <!--CONTROLPANEL-->
-        <div class='panel' id='panel-config' bsq-id='4' >
+        <div class='panel' id='panel-config' bsq-id='8' >
           <div class='bsq-row group' style='padding: 10px;'>
             
             <div class="bsq-col6"><p class='ios-input-title'>URL-Sync: </p></div>
@@ -160,8 +261,8 @@
           </div>
           
           <div class='bsq-row group' style='padding: 10px;position: absolute;bottom: 0;'>
-            <div class='ios-button ios-button-decline col-left col-20' ontouchend='refreshPage()'>Khởi động lại</div>
-            <div class='ios-button ios-button-decline col-right col-40' ontouchend='clearAllData()'>Xóa tất cả dữ liệu trên máy này</div>
+            <div class='ios-button ios-button-decline col-left col-20' onclick='refreshPage()'>Khởi động lại</div>
+            <div class='ios-button ios-button-decline col-right col-40' onclick='clearAllData()'>Xóa tất cả dữ liệu trên máy này</div>
           </div>
           
         </div>
