@@ -91,7 +91,7 @@ body, html, input, textarea{
     background: url('resources/BGR-INTRO.png');
   }
   #panel-04{
-    background: url('resources/BGR-INFO.jpg');
+    background: url('resources/BGR-INFO.png');
   }
   #panel-07{
     background: url('resources/end/BGR-PARTERN.png');
@@ -746,30 +746,30 @@ body{
 }
 
 .energy-bar{  
-  width: 85px;
-  height: 190px;
+  width: 114px;
+  height: 254px;
   
   position: relative;
   background: url("resources/BAR-BGR.png");
   
-  transform: scale(1.9) translate(49px,30px);
-  -webkit-transform: scale(1.9) translate(49px,30px);
-  
+  transform: scale(1.9) translate(45px,30px);
+  -webkit-transform: scale(1.9) translate(45px,30px);
+    
   display: none;
 }
 
 
 .energy-item{  
   height: 0px;
-  width: 57px;
+  width: 95px;
   
   position: absolute;
   
   background: url("resources/BAR-ITEM.png");
   background-position: bottom;
   
-  bottom: 13px;
-  left: 14px;
+  bottom: 8px;
+  left: 10px;
 }
 
 .age-popup{

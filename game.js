@@ -1,3 +1,4 @@
+var heightBARIMG = 202;
 var user = {
   'name':'NguyenDongQuang',
   'age':1984,
@@ -76,7 +77,7 @@ function aniEND03() {
 	  
 	  $('#end-02-button-01').addClass('animated2')
 	  $('#end-02-button-01').css({	  
-		'-webkit-transform': 'scale(0.6)',
+		//'-webkit-transform': 'scale(0.6)',
 		'opacity': '0.6',
 	  })
 	  
@@ -102,11 +103,40 @@ function aniEND03() {
   
 }
 
+$("#end-03-button-01").click(function(){
+  aniEND04();
+})
+
+var tempELEMENTs = [0,0,0,0];
+
+function injectionBAR(id){
+  
+  $('#end-03-ele-0'+id).css({
+	'top':'460px',
+	'left':'370px',
+	'opacity':'0'
+  })
+  
+  tempELEMENTs[id-1] = 1;
+  checkELEMENT();
+}
+
+function checkELEMENT() {
+  if (tempELEMENTs[0]+tempELEMENTs[1]+tempELEMENTs[2]+tempELEMENTs[3] == 4) {
+	$("#end-03-button-next").show();
+	
+	$("#end-bar-inside").css({
+	  'height':heightBARIMG+'px'
+	});
+	
+  }
+}
+
 var bANIEND04 = false;
 function aniEND04() {
   
   if (!bANIEND04) {
-	for(var i=1;i<6;i++){
+	for(var i=1;i<5;i++){
 		
 		$('#end-03-ele-0'+i).addClass('animated-1s')
 		
@@ -114,39 +144,79 @@ function aniEND04() {
 		.delay(200 * i)
 		.queue( function(next){ 
 		  $(this).css({
-			'top':'250px'
+			'top':'290px'
 		  })
 		  next(); 
 		});
 		
-		$('#end-03-ele-0'+i)
-		.delay(1000+200 * i)
-		.queue( function(next){ 
-		  $(this).css({
-			'left':'299px',
-			'top':'460px',
-			'opacity':'0'
-		  })
-		  next(); 
-		});
+		//var templeft = (i*150) + "px";
+		//
+		//$('#end-03-ele-0'+i)
+		//.delay(1000+200 * i)
+		//.queue( function(next){
+		//  
+		//  $(this).css({
+		//	'left':templeft
+		//	//'top':'460px',
+		//	//'opacity':'0'
+		//  })
+		//  next(); 
+		//});
 	}
 	
+	$('#end-03-ele-01')
+	.delay(1000+200 * 1)
+	.queue( function(next){
+	  
+	  var templeft = (1*150) + "px";
+	  $(this).css({
+		'left':templeft
+		//'top':'460px',
+		//'opacity':'0'
+	  })
+	  next(); 
+	});
+	$('#end-03-ele-02')
+	.delay(1000+200 * 2)
+	.queue( function(next){
+	  
+	  var templeft = (2*150) + "px";
+	  $(this).css({
+		'left':templeft
+		//'top':'460px',
+		//'opacity':'0'
+	  })
+	  next(); 
+	});
+	$('#end-03-ele-03')
+	.delay(1000+200 * 3)
+	.queue( function(next){
+	  
+	  var templeft = (3*150) + "px";
+	  $(this).css({
+		'left':templeft
+		//'top':'460px',
+		//'opacity':'0'
+	  })
+	  next(); 
+	});
+	$('#end-03-ele-04')
+	.delay(1000+200 * 4)
+	.queue( function(next){
+	  
+	  var templeft = (4*150) + "px";
+	  $(this).css({
+		'left':templeft
+		//'top':'460px',
+		//'opacity':'0'
+	  })
+	  next(); 
+	});
+	
 	$("#end-bar-inside").addClass('animated-1s')
-	$("#end-bar-inside")
-		.delay(2000)
-		.queue( function(next){ 
-		  $(this).css({
-			'height':'226px'
-		  })
-		  next(); 
-		});
+	
 		
-	$("#end-03-button-next")
-		.delay(2000)
-		.queue( function(next){ 
-		  $(this).show();
-		  next(); 
-		}); 
+	
 	
 	bANIEND04 = true;
   }
@@ -158,7 +228,8 @@ function randomHIDEElement() {
   
   if($('#end-02-ele-'+numberRand).css('opacity') == 1){
 	$('#end-02-ele-'+numberRand).css({
-	'opacity' : '0.5'
+	'opacity' : '0.5',
+	'-webkit-transform':'scale(0.7)'
 	})
   }else{
 	randomHIDEElement();
@@ -210,10 +281,10 @@ function calBattery(currentPull, maxPull){
   
   if (percent < 100) {
     $("#battery-result").html('Pin thể lực của bạn <100%');
-    heightBAR = 163 * percent / 100;
+    heightBAR = heightBARIMG * percent / 100;
   }else if (percent >= 100) {
     $("#battery-result").html('Pin thể lực của bạn đạt 100%');
-    heightBAR = 163;
+    heightBAR = heightBARIMG;
   }
   
   $('#percent-bar-text').hide();
@@ -273,12 +344,12 @@ function nextBUTTON() {
   }
   if (current == 5) {
 	
-	var heightBAR = 226 * total.percent / 100;
+	var heightBAR = heightBARIMG * total.percent / 100;
 	$("#end-bar-inside").css({
 	  'height' : heightBAR + 'px'
 	})
 	
-	setTimeout(function(){ aniEND04(); } , 200 );
+	//setTimeout(function(){ aniEND04(); } , 200 );
   }
 
   current += 1; 
