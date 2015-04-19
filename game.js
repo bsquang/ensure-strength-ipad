@@ -107,7 +107,7 @@ $("#end-03-button-01").click(function(){
   aniEND04();
 })
 
-var tempELEMENTs = [0,0,0,0];
+var tempELEMENTs = [0,0,0,0,0,0];
 
 function injectionBAR(id){
   
@@ -122,13 +122,14 @@ function injectionBAR(id){
 }
 
 function checkELEMENT() {
-  if (tempELEMENTs[0]+tempELEMENTs[1]+tempELEMENTs[2]+tempELEMENTs[3] == 4) {
+  if (tempELEMENTs[0]+tempELEMENTs[1]+tempELEMENTs[2]+tempELEMENTs[3]+tempELEMENTs[4]+tempELEMENTs[5] == 6) {
 	$("#end-03-button-next").show();
 	
 	$("#end-bar-inside").css({
 	  'height':heightBARIMG+'px'
 	});
 	
+	$('#end-bar-inside-text').text(100+"%");
   }
 }
 
@@ -136,12 +137,12 @@ var bANIEND04 = false;
 function aniEND04() {
   
   if (!bANIEND04) {
-	for(var i=1;i<5;i++){
+	for(var i=1;i<7;i++){
 		
 		$('#end-03-ele-0'+i).addClass('animated-1s')
 		
 		$('#end-03-ele-0'+i)
-		.delay(200 * i)
+		.delay(50 * i)
 		.queue( function(next){ 
 		  $(this).css({
 			'top':'290px'
@@ -164,11 +165,14 @@ function aniEND04() {
 		//});
 	}
 	
+	var offsetX = 100;
+	var paddingX = 10;
+	
 	$('#end-03-ele-01')
 	.delay(1000+200 * 1)
 	.queue( function(next){
 	  
-	  var templeft = (1*150) + "px";
+	  var templeft = (1*(offsetX+paddingX)) + "px";
 	  $(this).css({
 		'left':templeft
 		//'top':'460px',
@@ -180,7 +184,7 @@ function aniEND04() {
 	.delay(1000+200 * 2)
 	.queue( function(next){
 	  
-	  var templeft = (2*150) + "px";
+	  var templeft = (2*(offsetX+paddingX)) + "px";
 	  $(this).css({
 		'left':templeft
 		//'top':'460px',
@@ -192,7 +196,7 @@ function aniEND04() {
 	.delay(1000+200 * 3)
 	.queue( function(next){
 	  
-	  var templeft = (3*150) + "px";
+	  var templeft = (3*(offsetX+paddingX)) + "px";
 	  $(this).css({
 		'left':templeft
 		//'top':'460px',
@@ -200,11 +204,38 @@ function aniEND04() {
 	  })
 	  next(); 
 	});
+	
 	$('#end-03-ele-04')
 	.delay(1000+200 * 4)
 	.queue( function(next){
 	  
-	  var templeft = (4*150) + "px";
+	  var templeft = (4*(offsetX+paddingX)) + "px";
+	  $(this).css({
+		'left':templeft
+		//'top':'460px',
+		//'opacity':'0'
+	  })
+	  next(); 
+	});
+	
+	$('#end-03-ele-05')
+	.delay(1000+200 * 5)
+	.queue( function(next){
+	  
+	  var templeft = (5*(offsetX+paddingX)) + "px";
+	  $(this).css({
+		'left':templeft
+		//'top':'460px',
+		//'opacity':'0'
+	  })
+	  next(); 
+	});
+	
+	$('#end-03-ele-06')
+	.delay(1000+200 * 6)
+	.queue( function(next){
+	  
+	  var templeft = (6*(offsetX+paddingX)) + "px";
 	  $(this).css({
 		'left':templeft
 		//'top':'460px',
@@ -214,7 +245,7 @@ function aniEND04() {
 	});
 	
 	$("#end-bar-inside").addClass('animated-1s')
-	
+	 
 		
 	
 	
@@ -298,6 +329,13 @@ function calBattery(currentPull, maxPull){
   setTimeout(function(){
 	
 	 $('.energy-item').height(heightBAR);
+	 
+	 //MINIBAR
+	var heightBAR2 = heightBARIMG * total.percent / 100;
+	$("#end-bar-inside").css({
+	 'height' : heightBAR2 + 'px'
+	})
+	$('#end-bar-inside-text').text(Math.round(percent)+"%"); 
 	
   }, 200)
   
@@ -323,6 +361,8 @@ function nextBUTTON() {
   
   if (current == 2) {
 	
+	$('#end-bar').show(); 
+	
 	var temp = "Với thể lực tương ứng ở tuổi "+getAge(user.age)+", bạn đang bị suy giảm sức khỏe hậu quả dễ thấy nhất là:";
 	$("#end-01-ele-02").text(temp);
 	
@@ -344,12 +384,22 @@ function nextBUTTON() {
   }
   if (current == 5) {
 	
-	var heightBAR = heightBARIMG * total.percent / 100;
-	$("#end-bar-inside").css({
-	  'height' : heightBAR + 'px'
+	//var heightBAR = heightBARIMG * total.percent / 100;
+	//$("#end-bar-inside").css({
+	//  'height' : heightBAR + 'px'
+	//})
+	
+	$("#end-bar").css({
+	  'top' : '430px',
+	  'left' : '370px',
+	  '-webkit-transform':'scale(1)'
 	})
 	
+	
 	//setTimeout(function(){ aniEND04(); } , 200 );
+  }
+  if (current == 6) {
+	$('#end-bar').hide();
   }
 
   current += 1; 
