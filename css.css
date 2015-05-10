@@ -793,6 +793,37 @@ body{
     display: none;
 }
 
+
+@-webkit-keyframes FINAL-MAN-ANIMATION {
+  0%   { top: 100px; }
+  50% { top: 150px; }
+  100% { top: 100px; }
+}
+@-webkit-keyframes FINAL-WOMAN-ANIMATION {
+  0%   { top: 70px; }
+  50% { top: 120px; }
+  100% { top: 70px; }
+}
+
+.end-03-man{
+  -webkit-animation: FINAL-MAN-ANIMATION 3s infinite; 
+  -moz-animation:    FINAL-MAN-ANIMATION 3s infinite;
+  -o-animation:      FINAL-MAN-ANIMATION 3s infinite;
+  animation:         FINAL-MAN-ANIMATION 3s infinite; 
+  
+  -webkit-transition: 1s ease all;
+}
+.end-03-woman{
+-webkit-animation: FINAL-WOMAN-ANIMATION 3s infinite;
+  -moz-animation:    FINAL-WOMAN-ANIMATION 3s infinite;
+  -o-animation:      FINAL-WOMAN-ANIMATION 3s infinite; 
+  animation:         FINAL-WOMAN-ANIMATION 3s infinite; 
+  
+  -webkit-transition: 1s ease all;
+}
+
+
+
 .group:before,
 .group:after {
     content: "";
