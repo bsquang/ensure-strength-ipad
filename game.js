@@ -408,16 +408,21 @@ function calBattery(currentPull, maxPull){
   }else if (percent <= 70 && percent >= 41) {
 	
 	$("#end-03-button-01")[0].src = "resources/end/CUP-03.png";
-	
-  }else if (percent <= 95 && percent >= 71) {
+  
+  }else if (percent >= 71) {
 	
 	$("#end-03-button-01")[0].src = "resources/end/CUP-02.png";
 	
-  }else if (percent >= 96) {
-	
-	$("#end-03-button-01")[0].src = "resources/end/CUP-01.png";
-	
   }
+//  }else if (percent <= 95 && percent >= 71) {
+//	
+//	$("#end-03-button-01")[0].src = "resources/end/CUP-02.png";
+//	
+//  }else if (percent >= 96) {
+//	
+//	$("#end-03-button-01")[0].src = "resources/end/CUP-01.png";
+//	
+//  }
   
   $('#percent-bar-text').hide();
   setTimeout(function(){
