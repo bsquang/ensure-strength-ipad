@@ -30,7 +30,7 @@
           <div class='bsq-row ios-toolbar ios-toolbar-dark'>
             <!--<div class='ios-button-toolbar' style='left: 0; top: 0;' onclick='prevBUTTON()'>Quay lại</div>-->
             <p style='text-align: center;line-height: 42px;'>PHÂN TÍCH LỰC KÉO</p>
-            <!--<div class='ios-button-toolbar' style='right: 0; top: 0;' onclick='controlBUTTON()'>Bảng điều khiển</div>-->
+            <div class='ios-button-toolbar' style='right: 0; top: 0;' onclick='controlBUTTON()'>Bảng điều khiển</div>
           </div>
           
           <div class='row-60' style='padding-top: 50px'>
@@ -42,7 +42,11 @@
               <select id='select-user-gender' style='width: 100%;padding: 10px 20px;font-size: 20px; margin-bottom: 5px;'>
                 <option value=0>Nam</option>
                 <option value=1>Nữ</option>
-              </select> 
+              </select>
+              
+              <input id='input-user-phone' type='text' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào số điện thoại' />
+              <input id='input-user-address' type='text' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào địa chỉ' />
+              
               
               <input id='input-pull' type='number' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào kết quả đo lực kéo' />
             </div>
@@ -259,14 +263,45 @@
         
         <!--CONTROLPANEL-->
         <div class='panel' id='panel-config' bsq-id='8' >
-          <div class='bsq-row group' style='padding: 10px;'>
+          <div class='bsq-row group' style='padding: 10px;display: none'>
             
             <div class="bsq-col6"><p class='ios-input-title'>URL-Sync: </p></div>
             <div class="bsq-col12"><input id='input-url' class='ios-input' type='url' /></div>            
             
           </div>          
-          <div class='bsq-row group' style='padding: 10px;'>                                    
+          <div class='bsq-row group' style='padding: 10px;display: none'>                                    
             <input id='btt-sync' class='ios-button ios-button-confirm col-30 col-right' type='button' value='Sync now'>            
+          </div>
+          
+          <div class='bsq-row group' style='padding: 10px; height: 700px; border: 1px solid black; overflow: auto;'>
+            <table>
+              <thead>
+                <tr>
+                  <th style='width: 50px;'></th>
+                  <th>Họ và tên</th>
+                  <th>Năm sinh</th>
+                  <th>Giới tính</th>
+                  <th>Điện thoại</th>
+                  <th>Địa chỉ</th>
+                  <th>Lực kéo</th>
+                  <th>Pin thể lực</th>
+                  <th>Ngày tạo</th>
+                </tr>
+              </thead>
+              <tbody id='listUserContent'>
+                <tr>
+                  <td></td>
+                  <td>Nguyen Dong Quang</td>
+                  <td>1989</td>
+                  <td>Nam</td>
+                  <td>01264814025</td>
+                  <td>29j aaaaaaaaaaaaa</td>
+                  <td>54</td>
+                  <td>78</td>
+                  <td>18/05/2015 07:00</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           
           <div class='bsq-row group' style='display: none'>

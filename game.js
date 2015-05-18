@@ -1,14 +1,28 @@
+var list_data_user_created = []; // User data-add
+var list_data_autocomplete = []; // Sync data-autocomplete
+var list_data_local = []; // User data-local
+
+
 var heightBARIMG = 202;
 var user = {
   'name':'NguyenDongQuang',
   'age':1984,
-  'sex':0
-  
+  'sex':0,
+  'phone':123456789,
+  'address':"here",
+  'dateCreated':getCurrentDateCreated()
 }
 
 var total = {
     'pull': 44,
 	'percent':50
+}
+
+function getCurrentDateCreated() {
+  
+  var current = new Date();
+  return current.getDate()+"/"+(current.getMonth()+1)+"/"+current.getFullYear()+" "+current.getHours()+":"+current.getMinutes();
+  
 }
 
 
@@ -456,7 +470,12 @@ function checkPTLK() {
   user.age = $("#input-user-birth").val();
   user.sex = $("#select-user-gender").val();
   
+  user.phone = $("#input-user-phone").val();
+  user.address = $("#input-user-address").val();  
+  
   calPTLK(1);
+  
+  saveDataUser();
   
   gotoPanel(2);
 }
@@ -881,3 +900,179 @@ function getAge(yearOfBirth) {
 function refreshPage() {
   window.location.href = '';
 }
+
+////////////////////////////////////////////////
+initData();
+function initData() {
+  if (localStorage.list_data_user_created == undefined) {    
+    localStorage.setItem('list_data_user_created','[]')    
+  }else{    
+    var temp = JSON.parse(localStorage.list_data_user_created);
+    list_data_user_created = temp;
+	
+	showListUser();
+  }
+}
+
+function clearData() {
+  localStorage.list_data_user_created = "[]";
+}
+
+function saveDataUser(){  
+  var temp_user = {
+    'customer': user,
+    'record':total          
+  };
+  
+  list_data_user_created.push(temp_user);  
+  localStorage.list_data_user_created = JSON.stringify(list_data_user_created);  
+  
+  console.log("Save data done!");
+  console.log(temp_user);
+  
+  showListUser()
+  
+  //list_data_local.push(user);    
+  //save2LocalStorage();
+  
+  
+  // Update to autocomplete and dat_local when new user and new phone
+  
+  
+  
+  //var bExist = false;
+  //for(var i=0;i<list_data_local.length;i++)
+  //{
+  //  var temp = list_data_local[i];
+  //  if (temp.phone == user.phone) {
+  //    bExist = true;
+  //    break;
+  //  }
+  //}
+  //
+  //if (bExist == false) {            
+  //  list_data_local.push(user);    
+  //  save2LocalStorage();
+  //}
+  
+}
+
+function save2LocalStorage() {
+  //Data local
+  var data_json = JSON.stringify(list_data_local);
+  localStorage.list_data_local = data_json;         
+}
+
+function syncData() {  
+  //var data_json = JSON.stringify(list_data_user_created);
+  //
+  //$.ajax({
+  //    type: "POST",
+  //    url: url_sync+"ajax.php",
+  //    data: {
+  //        'action': 'sync',
+  //        'data': data_json
+  //    },
+  //    success: function (msg) {
+  //        var temp = JSON.parse(msg);
+  //        if(temp.result=='1') {
+  //          alert('Send data done');
+  //                            
+  //          // Sync complete
+  //          var temp_time = getCurrentDateCreated();
+  //          localStorage.setItem('sync_last',temp_time);
+  //          $("#btt-sync").val("Sync now (Last:"+temp_time+")")
+  //          
+  //          clearData(); // Clear data
+  //          // Get autocomplete list
+  //          getDataList();
+  //        }
+  //    }
+  //});
+  
+}
+
+function getDataList() {
+  //$.ajax({
+  //    type: "GET",
+  //    url: url_sync+"ajax.php",
+  //    data: {
+  //        'action': 'sync'
+  //    },
+  //    success: function (msg) {
+  //      var temp = JSON.parse(msg);
+  //      data2Local(temp); // Store list local
+  //      data2AutoComplete(temp); // Store list autocomplete
+  //    }
+  //});
+}
+
+
+
+initDataLocal();
+function initDataLocal(){
+  if (localStorage.list_data_local == undefined) {    
+    localStorage.setItem('list_data_local','[]')    
+  }else{    
+    var temp = JSON.parse(localStorage.list_data_local);
+	list_data_local = temp;    
+  }
+}
+function data2Local(data){
+  list_data_local = data;
+  
+  var data_json = JSON.stringify(list_data_local);
+  localStorage.list_data_local = data_json; 
+}
+
+
+function showListUser(){
+  
+  $("#listUserContent").html('')
+  
+  for(var i=0; i<list_data_user_created.length ; i++){
+	
+	var tempUSER = list_data_user_created[i].customer;
+	var tempRecord = list_data_user_created[i].record;
+	
+	var gender = '';
+	if (tempUSER.sex == "0") {
+	  gender = "Nam";
+	}else{
+	  gender = "Nữ";
+	}
+	
+	var tempDIV = "<tr>"
+	+"<td>"+i+"</td>"
+	+"<td>"+tempUSER.name+"</td>"
+	+"<td>"+tempUSER.age+"</td>"	
+	+"<td>"+gender+"</td>"
+	+"<td>"+tempUSER.phone+"</td>"
+	+"<td>"+tempUSER.address+"</td>"
+	+"<td>"+Math.round(tempRecord.pull)+"</td>"
+	+"<td>"+Math.round(tempRecord.percent)+"%</td>"
+	+"<td>"+tempUSER.dateCreated+"</td>"
+	+"</tr>";
+	
+	$("#listUserContent").append(tempDIV);
+  }
+}
+
+function testDATA(count){
+  for(var i=0; i< count;i++){
+	saveDataUser();
+  }
+}
+
+function clearAllData() {
+  list_data_user_created = [];
+  localStorage.list_data_user_created = JSON.stringify(list_data_user_created);
+  
+  showListUser()
+}
+
+function controlBUTTON() {
+  $(window).scrollTop(0);
+  gotoPanel(8);
+}
+
