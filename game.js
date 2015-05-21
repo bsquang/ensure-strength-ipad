@@ -1,3 +1,120 @@
+var url_sync = 'http://www.lamhongdata.com/ensure/';
+var employee_data = {
+  
+  'id':'0',
+  'name':'name',
+  'channel':'',
+  'shop_id':''
+  
+};
+
+checkEMPLOYEE();
+
+function checkEMPLOYEE(){
+  if (localStorage.employee_data == undefined) {    
+    localStorage.setItem('employee_data','[]')
+	
+	$(".panel[bsq-id=100]").show();
+	
+  }else{    
+    var temp = JSON.parse(localStorage.employee_data);
+	employee_data = temp;
+	
+	$(".panel[bsq-id=100]").hide();
+	$(".panel[bsq-id=1]").show();
+	
+	$("#select-employee-channel2").val(employee_data.channel);
+	$("#input-employee-shopid2").val(employee_data.shop_id);
+	
+	$("#employee-info-nameid").html(employee_data.id +" : "+employee_data.name);
+	
+	
+  }
+} 
+function regEMPLOYEE(){
+  
+  if ($("#input-employee-id").val() != '' &&
+	  $("#input-employee-name").val() != '' &&
+	  $("#select-employee-channel").val() != '' &&
+	  $("#input-employee-shopid").val() != ''
+  ) {
+	
+	employee_data.id = $("#input-employee-id").val();
+	employee_data.name = $("#input-employee-name").val();
+	employee_data.channel = $("#select-employee-channel").val();
+	employee_data.shop_id = $("#input-employee-shopid").val();
+	
+	localStorage.employee_data = JSON.stringify(employee_data);
+	
+	$(".panel[bsq-id=100]").hide();
+	$(".panel[bsq-id=1]").show();
+  
+  }
+}
+function clearEmployeeData(){
+  localStorage.setItem('employee_data','[]');
+}
+function saveEmployeeData2(){
+  if (
+	  $("#select-employee-channel2").val() != '' &&
+	  $("#input-employee-shopid2").val() != ''
+  ) {
+	
+	
+	employee_data.channel = $("#select-employee-channel2").val();
+	employee_data.shop_id = $("#input-employee-shopid2").val();
+	
+	localStorage.employee_data = JSON.stringify(employee_data);
+	
+	alert("Xong!");
+  
+  }
+}
+
+function controlBUTTON() {
+  var employee_pass = '123456';
+  var supervisor_pass = '654321';
+  
+  var result = prompt("Nhập vào password");
+  
+  if (result == supervisor_pass) {
+	
+	$("#input-employee-id2").val(employee_data.id);
+	$("#input-employee-name2").val(employee_data.name);
+	
+	$(window).scrollTop(0);
+	gotoPanel(101);
+	
+  }else if (result == employee_pass) {
+	
+	$(window).scrollTop(0);
+	gotoPanel(8);
+	
+  }else{
+	
+	alert("Sai password !")
+	
+  }
+  
+}
+
+function editEMPLOYEE(){
+  if ($("#input-employee-id2").val() != '' &&
+	  $("#input-employee-name2").val() != ''
+	  
+  ) {
+	
+	employee_data.id = $("#input-employee-id2").val();
+	employee_data.name = $("#input-employee-name2").val();	
+	
+	localStorage.employee_data = JSON.stringify(employee_data);
+	
+	alert("Xong!")
+  
+  }
+}
+
+
 var list_data_user_created = []; // User data-add
 var list_data_autocomplete = []; // Sync data-autocomplete
 var list_data_local = []; // User data-local
@@ -10,18 +127,23 @@ var user = {
   'sex':0,
   'phone':123456789,
   'address':"here",
+  'type':"0",
   'dateCreated':getCurrentDateCreated()
 }
 
+//3 manh 2 tb 1 yeu
+
 var total = {
     'pull': 44,
+	'pullType':1,
+	'agePull':22,
 	'percent':50
 }
 
 function getCurrentDateCreated() {
   
   var current = new Date();
-  return current.getDate()+"/"+(current.getMonth()+1)+"/"+current.getFullYear()+" "+current.getHours()+":"+current.getMinutes();
+  return (current.getMonth()+1)+"/"+current.getDate()+"/"+current.getFullYear()+" "+current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
   
 }
 
@@ -152,6 +274,8 @@ function aniEND02() {
   
 }
 
+var countEnd02 = 0;
+
 var bANIEND03 = false;
 function aniEND03() {
   
@@ -164,8 +288,11 @@ function aniEND03() {
 	  
 	}
 	
-	$('#end-02-button-01').delay(3000).fadeIn();
-	$('#end-02-button-01').click(function(){
+	$('#end-02-button-01')
+	.delay(3000)
+	.queue( function(next){
+	  
+	  $('#end-02-button-01').fadeIn();
 	  
 	  $('#end-02-button-01').addClass('animated2')
 	  $('#end-02-button-01').css({	  
@@ -173,10 +300,21 @@ function aniEND03() {
 		'opacity': '0.6',
 	  })
 	  
-	  $('#end-02-button-02').fadeIn();
-	  $('#end-02-button-02').click(function(){randomHIDEElement()});
-	  $('#end-02-button-03').fadeIn();
-	  $('#end-02-button-03').click(function(){randomHIDEElement()});
+	  $('#end-02-button-01').click(function(){	  
+	  
+		if (countEnd02 < 2) {
+		  countEnd02 += 1;
+		}
+		
+		if (countEnd02 == 1) {
+		  $('#end-02-button-02').fadeIn();
+		  $('#end-02-button-02').click(function(){randomHIDEElement()});
+		}else if (countEnd02 == 2) {
+		  $('#end-02-button-03').fadeIn();
+		  $('#end-02-button-03').click(function(){randomHIDEElement()});
+		}	  
+		
+	  })
 	  
 	  for(var i=1;i<11;i++){
 		
@@ -186,8 +324,15 @@ function aniEND03() {
 		})
 		
 	  }
-	  
-	})
+	 
+	  next(); 
+	});
+	
+	
+	//$('#end-02-button-01').delay(3000).fadeIn();
+	
+	
+	
   
 	bANIEND03 = true;
   
@@ -346,17 +491,32 @@ function aniEND04() {
   }
 }
 
+var countRandomElement = 1;
 function randomHIDEElement() {
   
-  var numberRand = getRandomInt(1,10);
+//  var numberRand = getRandomInt(1,10);
+//  
+//  if($('#end-02-ele-'+numberRand).css('opacity') == 1){
+//	$('#end-02-ele-'+numberRand).css({
+//	'opacity' : '0.5',
+//	'-webkit-transform':'scale(0.7)'
+//	})
+//  }else{
+//	countRandomElement += 1;
+//	if (countRandomElement < 11) {
+//	  randomHIDEElement();
+//	}
+//	
+//  }
+
   
-  if($('#end-02-ele-'+numberRand).css('opacity') == 1){
-	$('#end-02-ele-'+numberRand).css({
+  if (countRandomElement < 11) {
+	$('#end-02-ele-'+countRandomElement).css({
 	'opacity' : '0.5',
 	'-webkit-transform':'scale(0.7)'
 	})
-  }else{
-	randomHIDEElement();
+  
+	countRandomElement += 1;
   }
   
   $('#end-02-button-next').show();
@@ -475,7 +635,7 @@ function checkPTLK() {
   
   calPTLK(1);
   
-  saveDataUser();
+  //saveDataUser();
   
   gotoPanel(2);
 }
@@ -537,6 +697,10 @@ function nextBUTTON() {
   }
   if (current == 6) {
 	$('#end-bar').hide();
+  }
+  
+  if (current == 7) {
+	current = 101;
   }
 
   current += 1; 
@@ -657,6 +821,8 @@ function calPTLK(type) {
     
     if (total.pull < middlePULL) {
 	  
+	  total.pullType = 3;
+	  
 	  if (total.pull < defaultPull[defaultPull.length-1]) {
 		
 		lessIndex = defaultPull.length-1;
@@ -719,6 +885,14 @@ function calPTLK(type) {
       $('#age-popup-text').text(age_temp);
     }
     
+	if (total.pull >= middlePULL && total.pull < maxPULL) {
+	  total.pullType = 2;
+	}
+	
+	if (total.pull >= maxPULL) {
+	  total.pullType = 1;
+	}
+	
 
     divTarget.highcharts({
         chart: {
@@ -964,51 +1138,44 @@ function save2LocalStorage() {
 }
 
 function syncData() {  
-  //var data_json = JSON.stringify(list_data_user_created);
+  
+  var sync_data = {
+	
+	'employeeData' : employee_data,
+	'userData' : list_data_user_created	
+	
+  }
+  
+  var data_json = JSON.stringify(sync_data);
+  
   //
-  //$.ajax({
-  //    type: "POST",
-  //    url: url_sync+"ajax.php",
-  //    data: {
-  //        'action': 'sync',
-  //        'data': data_json
-  //    },
-  //    success: function (msg) {
-  //        var temp = JSON.parse(msg);
-  //        if(temp.result=='1') {
-  //          alert('Send data done');
-  //                            
-  //          // Sync complete
-  //          var temp_time = getCurrentDateCreated();
-  //          localStorage.setItem('sync_last',temp_time);
-  //          $("#btt-sync").val("Sync now (Last:"+temp_time+")")
-  //          
-  //          clearData(); // Clear data
-  //          // Get autocomplete list
-  //          getDataList();
-  //        }
-  //    }
-  //});
+  $.ajax({
+      type: "POST",
+      url: url_sync+"ajax.php?",
+      data: {
+          'action': 'sync',
+          'data': data_json
+      },
+      success: function (msg) {
+          var temp = JSON.parse(msg);
+          
+		  if(temp.result=='1') {		
+            alert('Đã gởi dữ liệu xong!');
+
+            list_data_user_created = [];
+			localStorage.list_data_user_created = JSON.stringify(list_data_user_created);
+			
+			showListUser();
+			$("#panel-list-user").hide();
+ 
+          }
+      }
+  });
   
 }
 
-function getDataList() {
-  //$.ajax({
-  //    type: "GET",
-  //    url: url_sync+"ajax.php",
-  //    data: {
-  //        'action': 'sync'
-  //    },
-  //    success: function (msg) {
-  //      var temp = JSON.parse(msg);
-  //      data2Local(temp); // Store list local
-  //      data2AutoComplete(temp); // Store list autocomplete
-  //    }
-  //});
-}
 
-
-
+//INIT DATA LOCAL
 initDataLocal();
 function initDataLocal(){
   if (localStorage.list_data_local == undefined) {    
@@ -1042,6 +1209,14 @@ function showListUser(){
 	  gender = "Nữ";
 	}
 	
+	var resultType='';
+	switch(tempUSER.type){
+	  case 0: resultType="Mới"; break;
+	  case 1: resultType="Cũ"; break;
+	  case 2: resultType="Không mua"; break;
+	}
+	
+	
 	var tempDIV = "<tr>"
 	+"<td>"+i+"</td>"
 	+"<td>"+tempUSER.name+"</td>"
@@ -1051,6 +1226,7 @@ function showListUser(){
 	+"<td>"+tempUSER.address+"</td>"
 	+"<td>"+Math.round(tempRecord.pull)+"</td>"
 	+"<td>"+Math.round(tempRecord.percent)+"%</td>"
+	+"<td>"+resultType+"</td>"
 	+"<td>"+tempUSER.dateCreated+"</td>"
 	+"</tr>";
 	
@@ -1065,14 +1241,32 @@ function testDATA(count){
 }
 
 function clearAllData() {
-  list_data_user_created = [];
-  localStorage.list_data_user_created = JSON.stringify(list_data_user_created);
   
-  showListUser()
+  var result = confirm("Bạn có chắc chắn muốn xóa tất cả dữ liệu này ?");
+  if (result) {
+	list_data_user_created = [];
+	localStorage.list_data_user_created = JSON.stringify(list_data_user_created);
+	
+	showListUser();
+  }
+  
 }
 
-function controlBUTTON() {
-  $(window).scrollTop(0);
-  gotoPanel(8);
+
+function viewReport() {
+  $("#panel-list-user").toggle();
+  $("#panel-employee-info").hide();
 }
 
+function viewEmployeeInfo(){
+  $("#panel-employee-info").toggle();
+  $("#panel-list-user").hide();
+}
+
+function setUser(type){
+  user.type = type;
+  
+  saveDataUser();
+  
+  refreshPage();
+}
