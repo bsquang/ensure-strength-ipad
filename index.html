@@ -31,18 +31,31 @@
           </div>
           <div class='row-60' style='padding-top: 50px'>
             <div class='bsq-row'>
+              <p>ID Nhân viên:</p>
               <input id='input-employee-id' type='text' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào nhân viên ID' />              
+              <p>Họ và tên nhân viên:</p>
               <input id='input-employee-name' type='text' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào họ và tên nhân viên' />              
-              
+              <p>Chọn Kênh:</p>
               <select id='select-employee-channel' style='width: 100%;padding: 10px 20px;font-size: 20px; margin-bottom: 5px;'>
                 <option value=0>TRADE-MT</option>
                 <option value=1>TRADE-GT</option>
                 <option value=2>ETC</option>
                 <option value=3>BIG-EVENT</option>
-                <option value=4>MINI-EVENT</option>
+                <option value=4>COM-EDU</option>
               </select>
               
-              <input id='input-employee-shopid' type='text' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào SHOP ID' />              
+              <p>Nhập vào ID SHOP, Siêu thị hoặc tên BV, tên Event:</p>
+              <input id='input-employee-shopid' type='text' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' />              
+              
+              <p>Chọn Team:</p>
+              <select id='select-employee-team' style='width: 100%;padding: 10px 20px;font-size: 20px; margin-bottom: 5px;'>
+                <option value=0>SURETEAM</option>
+                <option value=1>COMANDO</option>
+                <option value=2>H-SURE</option>
+                <option value=3>FF-REP</option>
+                <option value=4>PG-MT</option>
+                <option value=5>PG-GT</option>
+              </select>
               
             </div>
             <div class='bsq-row group' style='margin-top: 10px;'>              
@@ -293,12 +306,26 @@
         <div class='panel' id='panel-10' bsq-id='102'>                 
           
           <div class='group' style='width: 200px; margin: auto; padding-top: 100px'>
+            <p style='text-align: center;padding: 10px;'>Khách hàng đang dùng loại sữa gì?</p>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='SurePrevent' onclick='setUserMilk(0);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='EnPlus' onclick='setUserMilk(1);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='EnsureGold' onclick='setUserMilk(2);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Ensure Xách Tay' onclick='setUserMilk(3);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Sữa tươi' onclick='setUserMilk(4);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Chưa dùng sữa' onclick='setUserMilk(5);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Khác' onclick='setUserMilk(6);'/><br>
+            
+          </div>
+          
+          
+        </div>
+        <div class='panel' id='panel-10' bsq-id='103'>                 
+          
+          <div class='group' style='width: 200px; margin: auto; padding-top: 100px'>
             <p style='text-align: center;padding: 10px;'>Đánh giá khách hàng:</p>
-            <input id='btt-set-usernew' class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Khách hàng mới' onclick='setUser(0);'/>
-            <br>
-            <input id='btt-set-usercurrent' class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Khách hàng đã mua' onclick='setUser(1);'/>
-            <br>
-            <input id='btt-set-nonuser' class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Khách hàng không mua' onclick='setUser(2);'/>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='New User' onclick='setUser(0);'/><br>            
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Current User' onclick='setUser(1);'/><br>            
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Non-User' onclick='setUser(2);'/><br>
           </div>
           
           
@@ -324,17 +351,30 @@
             
             <p id='employee-info-nameid' style="font-size: 24px;font-weight: bold;">0123456:Nguyen Dong Quang</p>            
             <br>
-            <p>Kênh:</p><select id='select-employee-channel2' style='width: 100%;padding: 10px 20px;font-size: 20px; margin-bottom: 5px;'>
+            <p>Kênh:</p>
+            <select id='select-employee-channel2' style='width: 100%;padding: 10px 20px;font-size: 20px; margin-bottom: 5px;'>
                 <option value=0>TRADE-MT</option>
                 <option value=1>TRADE-GT</option>
                 <option value=2>ETC</option>
                 <option value=3>BIG-EVENT</option>
-                <option value=4>MINI-EVENT</option>
+                <option value=4>COM-EDU</option>                
             </select>
               
-            <p>Shop-ID:</p><input id='input-employee-shopid2' type='text' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào SHOP ID' />              
+            <p>Nhập vào ID SHOP, Siêu thị hoặc tên BV, tên Event:</p>
+            <input id='input-employee-shopid2' type='text' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào SHOP ID' />                          
+            
+            <p>Team:</p>
+            <select id='select-employee-team2' style='width: 100%;padding: 10px 20px;font-size: 20px; margin-bottom: 5px;'>
+              <option value=0>SURETEAM</option>
+              <option value=1>COMANDO</option>
+              <option value=2>H-SURE</option>
+              <option value=3>FF-REP</option>
+              <option value=4>PG-MT</option>
+              <option value=5>PG-GT</option>
+            </select>
+            
             <input id='btt-save-employee-data2' class='ios-button ios-button-confirm col-30 col-left' type='button' value='Lưu thay đổi thông tin nhân viên' onclick='saveEmployeeData2();'>
-              
+            
           </div>
           
           <div class='bsq-row group' style='padding: 10px; height: 500px; border: 1px solid black; overflow: auto; display: none;' id='panel-list-user'>
@@ -392,8 +432,10 @@
         <div class='panel' id='panel-config-visor' bsq-id='101'>
           <div class='row-60' style='padding-top: 50px'>
             <div class='bsq-row'>
-              
+              <h1>QUẢN LÝ NHÂN VIÊN</h1>
+              <p>ID:</p>
               <input id='input-employee-id2' type='text' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào nhân viên ID muốn thay đổi' />              
+              <p>Họ Và Tên:</p>
               <input id='input-employee-name2' type='text' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào họ và tên nhân viên muốn thay đổi' />
               
             </div>

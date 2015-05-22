@@ -4,14 +4,17 @@ var employee_data = {
   'id':'0',
   'name':'name',
   'channel':'',
-  'shop_id':''
+  'shop_id':'',
+  'team':''
   
 };
 
 checkEMPLOYEE();
 
 function checkEMPLOYEE(){
-  if (localStorage.employee_data == undefined) {    
+  if (localStorage.employee_data == undefined ||
+	  localStorage.employee_data == '[]') {
+	
     localStorage.setItem('employee_data','[]')
 	
 	$(".panel[bsq-id=100]").show();
@@ -24,6 +27,7 @@ function checkEMPLOYEE(){
 	$(".panel[bsq-id=1]").show();
 	
 	$("#select-employee-channel2").val(employee_data.channel);
+	$("#select-employee-team2").val(employee_data.team);
 	$("#input-employee-shopid2").val(employee_data.shop_id);
 	
 	$("#employee-info-nameid").html(employee_data.id +" : "+employee_data.name);
@@ -36,12 +40,14 @@ function regEMPLOYEE(){
   if ($("#input-employee-id").val() != '' &&
 	  $("#input-employee-name").val() != '' &&
 	  $("#select-employee-channel").val() != '' &&
-	  $("#input-employee-shopid").val() != ''
+	  $("#input-employee-shopid").val() != '' &&
+	  $("#select-employee-team").val() != ''
   ) {
 	
 	employee_data.id = $("#input-employee-id").val();
 	employee_data.name = $("#input-employee-name").val();
 	employee_data.channel = $("#select-employee-channel").val();
+	employee_data.team = $("#select-employee-team").val();
 	employee_data.shop_id = $("#input-employee-shopid").val();
 	
 	localStorage.employee_data = JSON.stringify(employee_data);
@@ -52,16 +58,20 @@ function regEMPLOYEE(){
   }
 }
 function clearEmployeeData(){
-  localStorage.setItem('employee_data','[]');
+  localStorage.removeItem('employee_data');
 }
 function saveEmployeeData2(){
   if (
 	  $("#select-employee-channel2").val() != '' &&
+	  $("#select-employee-team2").val() != '' &&
 	  $("#input-employee-shopid2").val() != ''
   ) {
 	
 	
+	//$("#select-employee-channel option:selected").text()
+	
 	employee_data.channel = $("#select-employee-channel2").val();
+	employee_data.team = $("#select-employee-team2").val();
 	employee_data.shop_id = $("#input-employee-shopid2").val();
 	
 	localStorage.employee_data = JSON.stringify(employee_data);
@@ -128,6 +138,7 @@ var user = {
   'phone':123456789,
   'address':"here",
   'type':"0",
+  'milkType':"0",
   'dateCreated':getCurrentDateCreated()
 }
 
@@ -818,10 +829,12 @@ function calPTLK(type) {
     
     var lessIndex = -1;
     var oldCalLess = 0;
+	
+	total.agePull = total.pull;
     
     if (total.pull < middlePULL) {
 	  
-	  total.pullType = 3;
+	  total.pullType = 1;
 	  
 	  if (total.pull < defaultPull[defaultPull.length-1]) {
 		
@@ -872,12 +885,14 @@ function calPTLK(type) {
         }
         
         $('#age-popup-text').text(age1[lessIndex]);
-        console.log("defaultPull:"+ total.pull + " " + lessIndex + " age:" + age1[lessIndex] + " default:" + defaultPull[lessIndex]);
+		
+		total.agePull = age1[lessIndex];
+        //console.log("defaultPull:"+ total.pull + " " + lessIndex + " age:" + age1[lessIndex] + " default:" + defaultPull[lessIndex]);
       
       }else{
         
         $('#age-popup-text').text(age_temp);  
-        
+        total.agePull = age_temp;
       }
       
     }
@@ -890,7 +905,7 @@ function calPTLK(type) {
 	}
 	
 	if (total.pull >= maxPULL) {
-	  total.pullType = 1;
+	  total.pullType = 3;
 	}
 	
 
@@ -1211,9 +1226,9 @@ function showListUser(){
 	
 	var resultType='';
 	switch(tempUSER.type){
-	  case 0: resultType="Mới"; break;
-	  case 1: resultType="Cũ"; break;
-	  case 2: resultType="Không mua"; break;
+	  case 0: resultType="New User"; break;
+	  case 1: resultType="Current User"; break;
+	  case 2: resultType="Non-User"; break;
 	}
 	
 	
@@ -1263,6 +1278,10 @@ function viewEmployeeInfo(){
   $("#panel-list-user").hide();
 }
 
+function setUserMilk(type){
+  user.milkType = type;
+  nextBUTTON();
+}
 function setUser(type){
   user.type = type;
   
