@@ -92,19 +92,6 @@
               
               <input id='input-pull' type='number' style='font-size: 20px;padding: 15px;width: 100%; margin-bottom: 5px;' placeholder='Nhập vào kết quả đo lực kéo' />
               
-              <div class='group' style='  width: 100%;  background: white;  padding: 10px;'>
-                <p style='float: left;  padding: 10px 20px;  font-size: 20px;'>Sữa đang sử dụng:</p>
-                <select id='select-user-milk' style='width: 60%;padding: 10px 20px;font-size: 20px; float: left'>
-                  <option value=0>SurePrevent</option>
-                  <option value=1>EnPlus</option>
-                  <option value=2>EnsureGold</option>
-                  <option value=3>Ensure Xách Tay</option>
-                  <option value=4>Sữa tươi</option>
-                  <option value=5>Chưa dùng sữa</option>
-                  <option value=5>Khác</option>
-                </select>
-              </div>
-              
             </div>
             <div class='bsq-row group' style='margin-top: 10px;'>              
               <div class='col-right col-30'>                      
@@ -167,8 +154,7 @@
           </div>
           
           <div class='bsq-row group' style='padding: 10px;  position: absolute;  left: 0;  bottom: 0;'>
-            <div class='ios-button ios-button-confirm col-right col-20 animated2' onclick='shortCall()'>ShortCall</div>
-            <div class='ios-button ios-button-confirm col-right col-20 animated2' onclick='nextBUTTON()'>FullCall</div>
+            <div class='ios-button ios-button-confirm col-right col-20 animated2' onclick='nextBUTTON()'>Tiếp</div>
           </div>
         </div>
         <!--END-->
@@ -318,26 +304,23 @@
         </div>
         <!--END-->
         <!--FINAL PANEL6-->
-        
-        <!--OLD CHOICE MILK-->
-        <!--<div class='panel' id='panel-10' bsq-id='102'>                 -->
-        <!--  -->
-        <!--  <div class='group' style='width: 200px; margin: auto; padding-top: 100px'>-->
-        <!--    <p style='text-align: center;padding: 10px;'>Khách hàng đang dùng loại sữa gì?</p>-->
-        <!--    <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='SurePrevent' onclick='setUserMilk(0);'/><br>-->
-        <!--    <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='EnPlus' onclick='setUserMilk(1);'/><br>-->
-        <!--    <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='EnsureGold' onclick='setUserMilk(2);'/><br>-->
-        <!--    <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Ensure Xách Tay' onclick='setUserMilk(3);'/><br>-->
-        <!--    <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Sữa tươi' onclick='setUserMilk(4);'/><br>-->
-        <!--    <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Chưa dùng sữa' onclick='setUserMilk(5);'/><br>-->
-        <!--    <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Khác' onclick='setUserMilk(6);'/><br>-->
-        <!--    -->
-        <!--  </div>-->
-        <!--  -->
-        <!--  -->
-        <!--</div>-->
-        
         <div class='panel' id='panel-10' bsq-id='102'>                 
+          
+          <div class='group' style='width: 200px; margin: auto; padding-top: 100px'>
+            <p style='text-align: center;padding: 10px;'>Khách hàng đang dùng loại sữa gì?</p>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='SurePrevent' onclick='setUserMilk(0);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='EnPlus' onclick='setUserMilk(1);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='EnsureGold' onclick='setUserMilk(2);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Ensure Xách Tay' onclick='setUserMilk(3);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Sữa tươi' onclick='setUserMilk(4);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Chưa dùng sữa' onclick='setUserMilk(5);'/><br>
+            <input class='ios-button ios-button-confirm' style='width: 100%; margin-bottom: 10px' type='button' value='Khác' onclick='setUserMilk(6);'/><br>
+            
+          </div>
+          
+          
+        </div>
+        <div class='panel' id='panel-10' bsq-id='103'>                 
           
           <div class='group' style='width: 200px; margin: auto; padding-top: 100px'>
             <p style='text-align: center;padding: 10px;'>Đánh giá khách hàng:</p>
