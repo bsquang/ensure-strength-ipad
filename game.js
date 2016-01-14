@@ -631,7 +631,14 @@ function checkPTLK() {
   $(window).scrollTop(0);
   
   user.name = $("#input-user-name").val();
-  user.age = $("#input-user-birth").val();
+  //150116 - BSQ
+  if ($("#input-user-birth").val().length < 3) {
+	var currentYear = new Date().getFullYear();
+    user.age = currentYear - $("#input-user-birth").val();
+  }else{
+	user.age = $("#input-user-birth").val();
+  }
+  
   user.sex = $("#select-user-gender").val();
   user.milkType = $("#select-user-milk").val();
   
